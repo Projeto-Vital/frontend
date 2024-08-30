@@ -5,7 +5,7 @@ function Footer() {
   let date = new Date().getFullYear()
 
   return (
-    <div className="flex flex-col min-h-screen w-full justify-end">
+    <div className="flex flex-col w-full justify-end bg-grey-1">
       <div className="flex flex-col items-center justify-center w-full py-16 ">
         <div className="container flex flex-wrap justify-around gap-x-20">
          
