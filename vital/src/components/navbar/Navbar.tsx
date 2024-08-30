@@ -1,4 +1,5 @@
 import { UserCircle } from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -52,8 +53,13 @@ function Navbar() {
                     Contato
                   </a>
                 </li>
-                <li>
-                  <a href="#login"><UserCircle size={28} color="#437228" /></a>
+                <li className="flex">
+                  <a href="#login"><UserCircle size={28} color="#437228" className="inline mx-2" /></a>
+                  <span className="block">
+                  <Link to="/login"><strong className="text-green-2 hover:underline cursor-pointer mr-1">Entre </strong></Link>
+                    ou
+                  <Link to="/cadastro"><strong className="text-green-2 hover:underline cursor-pointer ml-1">Cadastre-se </strong></Link>
+                  </span>
                 </li>
               </ul>
             </nav>
