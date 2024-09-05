@@ -29,8 +29,8 @@ function Login() {
 
   return (
     <>
-    <div className="flex justify-center min-h-screen items-center py-6">
-         <div className="flex w-3/5 p-5 rounded-lg shadow-2xl">
+    <div className="flex justify-center min-h-screen items-center py-6 bg-green-1">
+         <div className="flex w-3/5 p-5 rounded-lg bg-white shadow-2xl">
             <div className="w-1/2">
                 <img className="rounded-lg min-h-full object-cover" src="https://ik.imagekit.io/iixrkkdfp/alan-caishan-cU53ZFBr3lk-unsplash.jpg?updatedAt=1725033159321" alt="" />
             </div>

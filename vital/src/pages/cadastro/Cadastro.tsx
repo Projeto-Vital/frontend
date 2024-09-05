@@ -63,8 +63,8 @@ async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>) {
 }
   return (
     <>
-    <div className="flex justify-center min-h-screen items-center py-8">
-      <div className="flex w-5/6 p-5 rounded-lg shadow-2xl">
+    <div className="flex justify-center min-h-screen items-center bg-green-1 py-8">
+      <div className="flex w-5/6 p-5 rounded-lg shadow-2xl bg-white">
         <div className="w-1/2">
           <img className="rounded-lg" src="https://ik.imagekit.io/lari/madison-lavern-4gcqRf3-f2I-unsplash.jpg?updatedAt=1725027068506" alt="" />
         </div>
