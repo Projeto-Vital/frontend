@@ -9,6 +9,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import FormCategoria from "./components/categorias/formcategoria/FormCategoria";
 import ListaCategorias from "./components/categorias/listacategorias/ListaCategorias";
 import DeletarCategoria from "./components/categorias/deletarcategoria/DeletarCategoria";
+import Contato from "./pages/contato/Contato";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <div className="min-h-[80vh]">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/contato" element={<Contato />} />
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/login" element={<Login />} />
               <Route path="/categorias" element={<ListaCategorias />} />

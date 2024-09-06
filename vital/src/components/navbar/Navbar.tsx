@@ -38,7 +38,9 @@ function Navbar() {
             <li className="hover:text-green-1 cursor-pointer">Serviços</li>
             <li className="hover:text-green-1 cursor-pointer">Como Funciona</li>
             <li className="hover:text-green-1 cursor-pointer"><Link to='/sobre'>Quem Somos</Link></li>
-            <li className="hover:text-green-1 cursor-pointer">Contato</li>
+            <li className="hover:text-green-1 cursor-pointer">
+              <Link to='/contato'>Contato</Link>
+              </li>
             <li className={`hover:text-green-1 cursor-pointer  ${usuario.usuario === "admin123@gmail.com" ? 'block':'hidden'}`}>
               <Link to = '/categorias'>Categorias </Link>
             </li>
