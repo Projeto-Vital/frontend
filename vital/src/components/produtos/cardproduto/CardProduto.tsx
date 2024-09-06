@@ -44,9 +44,16 @@ function CardProduto({ produto }: CardProdutoProps) {
             </div>
           </div>
           <div className="mt-14">
+          <Link to={`/cadastroProduto`}>
+              <button>Cadastrar</button>
+            </Link>
             <Link to={`/deletarProduto/${produto.id}`}>
               <button>Deletar</button>
             </Link>
+            <Link to={`/editarProduto/${produto.id}`}>
+              <button>Atualizar</button>
+            </Link>
+            
           </div>
         </div>
       </div>
