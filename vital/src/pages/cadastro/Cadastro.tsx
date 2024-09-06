@@ -29,7 +29,7 @@ useEffect(() => {
   }
 }, [usuario]);
 
-function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+function atualizarEstado(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
   setUsuario({
     ...usuario,
     [e.target.name]: e.target.value
@@ -126,7 +126,7 @@ async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>) {
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
 
-            <label htmlFor="user-select">Tipo de Usuário</label>
+            {/* <label htmlFor="user-select">Tipo de Usuário</label>
             <input
               className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg"
               type="number"
@@ -134,19 +134,21 @@ async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>) {
               id="tipo"
               value={usuario.tipo}
               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-            />
+            /> */}
 
-            {/* <select
+            <select
               className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg "
               name="tipo"
               id="tipo"
+              value={usuario.tipo}
+              onChange={(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => atualizarEstado(e)}
             >
               <option disabled selected value="">
                 --Selecione o tipo de usuário--
               </option>
-              <option value="paciente">Usuário Paciente</option>
-              <option value="profissional">Usuário Profissional</option>
-            </select> */}
+              <option value="1">Usuário Paciente</option>
+              <option value="2">Usuário Profissional</option>
+            </select>
 
             <button
               type='submit'
