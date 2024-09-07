@@ -1,4 +1,76 @@
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import emailjs from "@emailjs/browser";
+import { RotatingLines } from "react-loader-spinner";
+
+interface Contato {
+  assunto: string;
+  nome: string;
+  telefone: string;
+  email: string;
+  mensagem: string;
+}
+
 function Contato() {
+  const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const [isSucess, setIsSucess] = useState<boolean>(false);
+
+  const [contato, setContato] = useState<Contato>({} as Contato);
+
+  function atualizarEstado(
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ) {
+    setContato({
+      ...contato,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  /**
+   * Se o e-mail for enviado com sucesso, o usuário será redirecionado para
+   * a Página de Login.
+   */
+  useEffect(() => {
+    if (isSucess) {
+      retornar();
+    }
+  }, [isSucess]);
+
+  function retornar() {
+    navigate("/");
+  }
+
+  async function sendMail(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsLoading(true);
+
+    emailjs.init(import.meta.env.VITE_EMAIL_USER_ID);
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAIL_SERVICE_ID,
+        import.meta.env.VITE_EMAIL_TEMPLATE_ID,
+        {
+          assunto: contato.assunto,
+          nome: contato.nome,
+          telefone: contato.telefone,
+          email: contato.email,
+          mensagem: contato.mensagem,
+        }
+      )
+      .then((resposta: any) => {
+        alert("Mensagem enviada com sucesso!");
+        setIsSucess(true);
+      })
+      .catch((erro: any) => {
+        alert("Erro ao emviar a Mensagem!");
+      });
+
+    setIsLoading(false);
+  }
 
   return (
     <div className="flex flex-wrap justify-center min-h-screen py-2 items-center">
@@ -15,24 +87,22 @@ function Contato() {
             Entre em Contato
           </h1>
           <form
-            action="https://formsubmit.co/5dbd42efb024c145cfd9ea3ac243f81d"
+            onSubmit={sendMail}
             method="POST"
             className="gap-2 flex flex-wrap justify-center"
           >
-            <input
-              type="hidden"
-              name="_next"
-              value="http://localhost:5173/contato"
-            ></input>
-            <input type="hidden" name="_captcha" value="false" />
-
             <div className="flex flex-col flex-wrap w-5/12">
               <label htmlFor="nome">Nome</label>
               <input
                 type="text"
                 id="nome"
                 name="name"
-                placeholder="Nome"
+                placeholder="Digite seu nome"
+                value={contato.nome}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  atualizarEstado(e)
+                }
+                required
                 className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-2"
               />
             </div>
@@ -43,7 +113,12 @@ function Contato() {
                 id="telefone"
                 name="telefone"
                 pattern="[0-9]{11}"
-                placeholder="Ex: 11988888888"
+                value={contato.telefone}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  atualizarEstado(e)
+                }
+                required
+                placeholder="Digite seu telefone. Ex: 11988888888"
                 className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-2"
               />
             </div>
@@ -53,7 +128,12 @@ function Contato() {
                 type="email"
                 id="email"
                 name="email"
-                placeholder="E-mail"
+                value={contato.email}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  atualizarEstado(e)
+                }
+                required
+                placeholder="Digite seu e-mail"
                 className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-2"
               />
             </div>
@@ -62,8 +142,13 @@ function Contato() {
               <input
                 type="text"
                 id="assunto"
-                name="subject"
-                placeholder="Assunto"
+                name="assunto"
+                value={contato.assunto}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  atualizarEstado(e)
+                }
+                required
+                placeholder="Digite o assunto"
                 className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-2"
               />
             </div>
@@ -72,16 +157,41 @@ function Contato() {
               <label htmlFor="mensagem">Mensagem</label>
               <textarea
                 id="mensagem"
-                name="message"
+                name="mensagem"
+                value={contato.mensagem}
+                onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+                  atualizarEstado(e)
+                }
+                required
                 className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-4"
               />
             </div>
+            <button
+              className="rounded text-white font-bold bg-red-3
+                           hover:bg-red-1 hover:text-black py-2
+                           justify-center w-10/12 flex flex-wrap"
+              onClick={retornar}
+            >
+              Cancelar
+            </button>
             <button
               type="submit"
               className="rounded text-white font-bold bg-green-3
                            hover:bg-green-1 hover:text-black py-2
                            justify-center w-10/12 flex flex-wrap"
-            > Enviar </button>
+            >
+              {isLoading ? (
+                <RotatingLines
+                  strokeColor="white"
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  width="24"
+                  visible={true}
+                />
+              ) : (
+                <span>Enviar</span>
+              )}
+            </button>
           </form>
         </div>
       </div>
