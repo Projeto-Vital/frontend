@@ -107,7 +107,7 @@ function Home() {
                   </div>
                   <div className='flex flex-col place-items-center justify-center p-4 w-28 h-28 md:w-32 md:h-32 bg-green-1 rounded-lg hover:text-white hover:duration-150'>
                     <DiceFive size={40}  />
-                    <p>Psicopedagogo</p>
+                    <p>Psicopedagia</p>
                   </div>
                 </div>
             </div>

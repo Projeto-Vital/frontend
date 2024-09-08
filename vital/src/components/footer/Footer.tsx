@@ -1,4 +1,5 @@
-import { EnvelopeSimple, GithubLogo, InstagramLogo, MapPin, YoutubeLogo } from "@phosphor-icons/react";
+import { EnvelopeSimple, GithubLogo, InstagramLogo, LinkedinLogo, MapPin, YoutubeLogo } from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
 
 function Footer() {
 
@@ -28,9 +29,8 @@ function Footer() {
                 <div className="mb-4 md:mb-0">
                   <h3 className="text-md my-3 font-bold text-green-2 ">Siga-nos</h3>
                   <div className="flex gap-3">
-                    <YoutubeLogo size={30} color="#437228"/>
-                    <InstagramLogo size={30} color="#437228"/>
-                    <GithubLogo size={30} color="#437228"/>
+                    <a href="https://linktr.ee/projetointegradorvitalplus"><LinkedinLogo size={30} color="#437228"/></a>
+                    <a href="https://linktr.ee/projetointegradorvitalplus"><GithubLogo size={30} color="#437228"/></a>
                   </div>
                 </div>
 
@@ -40,12 +40,12 @@ function Footer() {
               <div className="flex flex-col gap-1 md:gap-3 mb-5 md:mb-0">
                 <h3 className="my-3 md:my-0 text-md text-green-2 font-bold">Categorias</h3>
                 <ul className="*:text-green-700">
-                  <li className='hover:underline cursor-pointer'>Personal</li>
+                  <li className='hover:underline cursor-pointer'>Personal Trainer</li>
                   <li className='hover:underline cursor-pointer'>Psicólogo</li>
                   <li className='hover:underline cursor-pointer'>Nutricionista</li>
                   <li className='hover:underline cursor-pointer'>Terapeuta</li>
                   <li className='hover:underline cursor-pointer'>Yoga</li>
-                  <li className='hover:underline cursor-pointer'>Fisioterapeuta</li>
+                  <li className='hover:underline cursor-pointer'>Psicopedagogo</li>
                 </ul>
               </div>
 
@@ -53,11 +53,12 @@ function Footer() {
               <div className="flex flex-col gap-1 md:gap-3">
                 <h3 className="my-3 md:my-0 text-md text-green-2 font-bold">Institucional</h3>
                 <ul className="*:text-green-700">
-                  <li className='hover:underline cursor-pointer'>Serviços</li>
-                  <li className='hover:underline cursor-pointer'>Quem Somos</li>
-                  <li className='hover:underline cursor-pointer'>Contatos</li>
-                  <li className='hover:underline cursor-pointer'>Entrar</li>
-                  <li className='hover:underline cursor-pointer'>Cadastrar</li>
+                  <Link to = '/produtos'> <li className='hover:underline cursor-pointer'>Serviços</li></Link>
+                  <Link to = '/sobre'> <li className='hover:underline cursor-pointer'>Quem Somos</li></Link>
+                  <Link to = '/contato'> <li className='hover:underline cursor-pointer'>Contatos</li></Link>
+                  <Link to = '/login'> <li className='hover:underline cursor-pointer'>Entrar</li></Link>
+                  <Link to = '/cadastro'> <li className='hover:underline cursor-pointer'>Cadastrar</li></Link>
+            
                 </ul>
               </div>
 

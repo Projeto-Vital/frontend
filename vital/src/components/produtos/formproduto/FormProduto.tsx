@@ -1,12 +1,11 @@
 import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
-import React from "react";
 import Categoria from "../../../models/Categoria";
 import Produto from "../../../models/Produto";
 import { RotatingLines } from "react-loader-spinner";
 import AuthContext from "../../../contexts/AuthContext";
-import { Target } from "@phosphor-icons/react/dist/ssr";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 
 function FormProduto() {
@@ -107,13 +106,13 @@ function FormProduto() {
                     },
                 });
 
-                alert('Produto atualizado com sucesso')
+                ToastAlerta('Serviço atualizado com sucesso','sucesso')
 
             } catch (error: any) {
                 if (error.toString().includes('401')) {
                     handleLogout()
                 } else {
-                    alert('Erro ao atualizar o Produto')
+                    ToastAlerta('Erro ao atualizar o Produto','erro')
                 }
             }
 
@@ -125,13 +124,13 @@ function FormProduto() {
                     },
                 })
 
-                alert('Produto cadastrado com sucesso');
+                ToastAlerta('Produto cadastrado com sucesso','sucesso');
 
             } catch (error: any) {
                 if (error.toString().includes('401')) {
                     handleLogout()
                 } else {
-                    alert('Erro ao cadastrar o Produto');
+                    ToastAlerta('Erro ao cadastrar o Produto','erro');
                 }
             }
         }
@@ -141,95 +140,109 @@ function FormProduto() {
     }
 
     const carregandoCategoria = categoria.categoria === '';
-console.log(JSON.stringify(produto))
+    
     return (
-        <div className="flex flex-col items-center mx-auto container">
-            <h1 className="my-8 text-4xl text-center">
-                {id !== undefined ? 'Editar Produto' : 'Cadastrar Produto'}
-            </h1>
+        <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
 
-            <form className="flex flex-col gap-4 w-1/2" onSubmit={cadastraProduto}>
-                <div className="flex flex-col gap-2">
-                    <label htmlFor="nome">Nome do Produto</label>
-                    <input
-                        type="text"
-                        placeholder="Nome do Produto"
-                        name="nome"
-                        required
-                        className="border-2 border-slate-700 p-2 rounded"
-                        value={produto.nome}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                    />
+            <div className='hidden sm:block relative'>
+                <div className='absolute top-[25%] left-[10%] flex flex-col'>
+                <h1 className='text-8xl font-bold text-white py-5'>Faça parte da Vital<span className='text-green-2'>+</span></h1>
+                <div className='max-w-[500px] p-2'>
+                    <p className='text-xl text-white'>Faça parte de uma comunidade de profissionais comprometidos com a saúde e o bem-estar.
+                         Junte-se aos especialistas que integram a Vital+ e colabore em um ambiente inovador, 
+                        onde o conhecimento e a experiência se unem para transformar vidas</p>
                 </div>
-                <div className="flex flex-col gap-2">
-                    <label htmlFor="descricao">Descrição do Produto</label>
-                    <input
-                        type="text"
-                        placeholder="Descrição do Produto"
-                        name="descricao"
-                        required
-                        className="border-2 border-slate-700 p-2 rounded"
+                </div>
+                <img className='w-full h-full object-cover object-center 'src="https://ik.imagekit.io/iixrkkdfp/cytonn-photography-n95VMLxqM2I-unsplash.jpg?updatedAt=1725752971356" alt="imagem de login" />
+            </div>
+            
+            <div className='flex flex-col justify-center px-4'>
+                <form className='max-w-[450px] w-full mx-auto bg-white p-4' onSubmit={cadastraProduto} >
+                    <h2 className='text-4xl sm:text-5xl font-bold text-center py-3 text-green-2'> {id !== undefined ? 'Atualizar Serviço' : 'Cadastrar Serviço'}</h2>
+                    <p className='text-center pb-6'> 
+                        {id !== undefined ? 'Atualize as informações do seu serviço' : 'Cadastre-se agora e faça parte do time Vital+'}
+                    </p>
+                   
+                    <div className='flex flex-col py-2'>
+                        <label htmlFor='nome' className='text-green-3 mb-1'>Nome do Serviço</label>
+                        <input 
+                            className='border p-2 focus:border-green-2 focus:outline-green-2 rounded-lg'
+                            placeholder='Insira o nome do serviço'
+                            type="text" 
+                            name="nome" 
+                            required
+                            id="nome"
+                            value={produto.nome}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                            />
+                    </div>
+
+                    <div className='flex flex-col py-2'>
+                        <label htmlFor='descricao' className='text-green-3 mb-1'>Descrição do Serviço</label>
+                        <input
+                        className='border p-2 focus:border-green-2 focus:outline-green-2 rounded-lg'
+                        placeholder='Descrição do serviço' 
+                        type="text" 
+                        name="descricao" 
+                        id="descricao" 
                         value={produto.descricao}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                    />
-                </div>
-                <div className="flex flex-col gap-2">
-                    <label htmlFor="descricao">Preço do Produto</label>
-                    <input
-                        type="number"
-                        step='.01'
-                        placeholder="Preço do Produto"
-                        name="preco"
-                        required
-                        className="border-2 border-slate-700 p-2 rounded"
+                        />
+                    </div>
+
+                    <div className='flex flex-col py-2'>
+                        <label htmlFor='preco'className='text-green-3 mb-1'>Preço</label>
+                        <input
+                        className='border p-2 focus:border-green-2 focus:outline-green-2 rounded-lg'
+                        placeholder='Preço do Serviço' 
+                        type="number" 
+                        name="preco" 
+                        id="preco" 
                         value={produto.preco}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                    />
-                </div>
-                <div className="flex flex-col gap-2">
-                    <label htmlFor="descricao">Foto do Produto</label>
-                    <input
-                        type="text"
-                        placeholder="Foto do Produto"
-                        name="foto"
-                        required
-                        className="border-2 border-slate-700 p-2 rounded"
+                        />
+                    </div>
+
+                    <div className='flex flex-col py-2'>
+                        <label htmlFor='Foto' className='text-green-3 mb-1'>Foto</label>
+                        <input
+                        className='border p-2 focus:border-green-2 focus:outline-green-2 rounded-lg'
+                        placeholder='Insira uma foto' 
+                        type="text" 
+                        name="foto" 
+                        id="foto" 
                         value={produto.foto}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                    />
-                </div>
-                <div className="flex flex-col gap-2">
-                    <p>Categoria do Produto</p>
-                    <select name="categoria" id="categoria" className='border-slate-800 p-2 border rounded'
-                        onChange={(e) => buscarCategoriaPorId(e.currentTarget.value)}
-                    >
-                        <option value="" selected disabled>Selecione uma Categoria</option>
+                        />
+                    </div>
 
-                        {categorias.map((categoria) => (
-                            <>
+                    <div className='flex flex-col py-2'>
+                        <p className='text-green-3 mb-1'>Categoria do Serviço</p>
+                        <select name="categoria" id="categoria" className='border-slate-800 p-2 border rounded'
+                        onChange={(e) => buscarCategoriaPorId(e.currentTarget.value)}>
+                            <option value="" selected disabled>Selecione uma Categoria</option>
+                             {categorias.map((categoria) => (
+                             <>
                                 <option value={categoria.id} >{categoria.categoria}</option>
-                            </>
+                             </>
                         ))}
-
-                    </select>
-                </div>
-                <button
-                    type='submit'
-                    className='flex justify-center bg-green-2 hover:bg-indigo-800 disabled:bg-green-1 mx-auto py-2 rounded w-1/2 font-bold text-white'
-                    disabled={carregandoCategoria}
-                >
+                        </select>
+                    </div>
+                    <button type='submit'
+                    className='border w-full my-5 py-3 bg-green-2 hover:bg-green-1 disabled:bg-green-3 text-white flex justify-center' 
+                    disabled={carregandoCategoria}>  
+                    
                     {isLoading ?
-                        <RotatingLines
-                            strokeColor="white"
-                            strokeWidth="5"
-                            animationDuration="0.75"
-                            width="24"
-                            visible={true}
-                        /> :
-                        <span>{id !== undefined ? 'Atualizar' : 'Cadastrar'}</span>
-                    }
-                </button>
-            </form>
+                    <RotatingLines
+                        strokeColor='white'
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="24"
+                        visible={true}
+                        /> : <span>{id !== undefined ? 'Atualizar' : 'Cadastrar'}</span>}
+                    </button>
+                </form>
+            </div> 
         </div>
     );
 }

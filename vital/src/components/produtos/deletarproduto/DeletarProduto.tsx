@@ -4,6 +4,7 @@ import Produto from "../../../models/Produto";
 import AuthContext from "../../../contexts/AuthContext";
 import { buscar, deletar } from "../../../services/Service";
 import { RotatingLines } from "react-loader-spinner";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function DeletarProduto() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function DeletarProduto() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado!");
+      ToastAlerta("Você precisa estar logado!","info");
       navigate("/login");
     }
   }, [token]);
@@ -53,12 +54,13 @@ function DeletarProduto() {
         headers: { Authorization: token }
     });
 
-      alert("Serviço apagado com sucesso!");
+      ToastAlerta("Serviço apagado com sucesso!","sucesso");
+
     } catch (error: any) {
       if (error.toString().includes("401")) {
         handleLogout();
       } else {
-        alert("Erro ao apagar o serviço!");
+        ToastAlerta("Erro ao apagar o serviço!","erro");
       }
     }
 

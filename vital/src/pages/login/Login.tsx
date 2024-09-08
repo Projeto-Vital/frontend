@@ -29,60 +29,63 @@ function Login() {
 
   return (
     <>
-    <div className="flex justify-center min-h-screen items-center py-6 bg-green-1">
-         <div className="flex w-3/5 p-5 rounded-lg bg-white shadow-2xl">
-            <div className="w-1/2">
-                <img className="rounded-lg min-h-full object-cover" src="https://ik.imagekit.io/iixrkkdfp/alan-caishan-cU53ZFBr3lk-unsplash.jpg?updatedAt=1725033159321" alt="" />
-            </div>
-            <div className='flex flex-col justify-center items-center w-1/2 p-8 '>
-               <div className='flex flex-col items-center justify-center'>
-                    <h2 className='text-3xl font-bold text-green-2'>Bem-Vindo a Vital+</h2>
-                    <p className='mb-4 text-sm'>Entre com seu email e senha para continuar</p>
-               </div>
-               <form action="" className='flex flex-col w-full p-5 gap-2' onSubmit={login}>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-2"
-                        type="email"
-                        name="usuario"
-                        id="usuario"
-                        placeholder="Digite seu email"
-                        value={usuarioLogin.usuario}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                    />
-                     <label htmlFor="email">Senha</label>
-                     <input
-                        className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-2"
-                        type="password"
-                        name="senha"
-                        id="senha"
-                        placeholder="Digite sua senha"
-                        value={usuarioLogin.senha}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                    />
-                     <button
-                        type='submit'
-                        className="rounded bg-indigo-400 flex justify-center
-                                  bg-green-2 hover:bg-green-1 text-white mt-5 py-2 w-full">
+      <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
+        <div className='flex flex-col justify-center px-4'>
+          <form className='max-w-[450px] w-full mx-auto bg-white p-4'onSubmit={login}>
 
-                        {isLoading ?
-                            <RotatingLines
-                                strokeColor='white'
-                                strokeWidth="5"
-                                animationDuration="0.75"
-                                width="24"
-                                visible={true}
-                            />:<span>Entrar</span>}
-                    </button>
-               </form>
-               <p className='mt-5 '>Ainda não tem uma conta? 
-                <Link to = "/cadastro">
-                    <span className='ml-1 font-bold text-green-2 hover:underline cursor-pointer'>Cadastre-se</span>
-                </Link>
-               </p>
-            </div>   
-         </div>
-    </div>
+            <h2 className='text-4xl sm:text-5xl font-bold text-center py-3 text-green-2'>Bem-Vindo a Vital+</h2>
+            <p className='text-center pb-6'>Entre com seu email e senha para continuar</p>
+            <div className='flex flex-col py-2'>
+              <label className='text-green-3 mb-1'>Email</label>
+              <input 
+                className='border p-2 focus:border-green-2 focus:outline-green-2 rounded-lg'
+                placeholder='Digite o seu email'
+                type="email" 
+                name="usuario" 
+                id="usuario"
+                value={usuarioLogin.usuario}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                />
+            </div>
+            <div className='flex flex-col py-2'>
+              <label className='text-green-3 mb-1'>Senha</label>
+              <input
+               className='border p-2 focus:border-green-2 focus:outline-green-2 rounded-lg'
+               placeholder='Digite sua senha' 
+               type="password" 
+               name="senha" 
+               id="senha" 
+               value={usuarioLogin.senha}
+               onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+               />
+            </div>
+            <button type='submit'className='border w-full my-5 py-2 bg-green-2 hover:bg-green-1 text-white flex justify-center'>  
+              {isLoading ?
+               <RotatingLines
+                  strokeColor='white'
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  width="24"
+                  visible={true}
+                  /> : <span >Entrar</span>}
+            </button>
+            <div className='text-center'>
+              <p>Ainda não tem uma conta?
+                <Link to='/cadastro'><span className='font-bold text-green-2 hover:underline mx-1'>Cadastre-se</span></Link>
+              </p>
+            </div>
+          </form>
+        </div> 
+        <div className='hidden sm:block relative'>
+          <div className='absolute top-[30%] left-[10%] flex flex-col'>
+            <h1 className='text-8xl font-bold text-white py-4'>Vital<span className='text-green-2'>+</span></h1>
+            <div className='max-w-[450px] p-2'>
+              <p className='text-xl text-white'>Faça login e continue-se conectado ao seu bem-estar. Acesse sua conta para continuar aproveitando nossos serviços.</p>
+            </div>
+           </div>
+          <img className='w-full h-full object-cover object-center 'src="https://ik.imagekit.io/iixrkkdfp/carl-barcelo-nqUHQkuVj3c-unsplash.jpg?updatedAt=1725385153115" alt="imagem de login" />
+        </div>
+      </div>
     </>
   )
 }

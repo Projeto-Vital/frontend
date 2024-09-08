@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import Categoria from '../../../models/Categoria';
 import AuthContext from '../../../contexts/AuthContext';
 import { buscar, deletar } from '../../../services/Service';
+import { ToastAlerta } from '../../../utils/ToastAlerta';
 
 function DeletarCategoria() {
     const navigate = useNavigate()
@@ -27,7 +28,7 @@ function DeletarCategoria() {
     }
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado!')
+            ToastAlerta('Você precisa estar logado!','info')
             navigate('/login')
         }
     }, [token])
@@ -49,12 +50,12 @@ function DeletarCategoria() {
             await deletar(`/categorias/${id}`, {
                 headers: { Authorization: token }
             })
-            alert('A categoria foi apagada com sucesso!')
+            ToastAlerta('A categoria foi apagada com sucesso!','sucesso')
         } catch (error: any) {
             if (error.toString().includes('401')) {
                 handleLogout()
             }else{
-                alert('Erro ao Excluir a Categoria!')
+                ToastAlerta('Erro ao Excluir a Categoria!','erro')
             }
         }
 

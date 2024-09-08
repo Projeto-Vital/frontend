@@ -29,10 +29,6 @@ function Contato() {
     });
   }
 
-  /**
-   * Se o e-mail for enviado com sucesso, o usuário será redirecionado para
-   * a Página de Login.
-   */
   useEffect(() => {
     if (isSucess) {
       retornar();

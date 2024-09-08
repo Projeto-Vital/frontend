@@ -13,11 +13,14 @@ import Contato from "./pages/contato/Contato";
 import ListaProdutos from "./components/produtos/listaprodutos/ListaProdutos";
 import FormProduto from "./components/produtos/formproduto/FormProduto";
 import DeletarProduto from "./components/produtos/deletarproduto/DeletarProduto";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <>
       <AuthProvider>
+        <ToastContainer/>
         <BrowserRouter>
           <Navbar />
           <div className="min-h-[80vh]">

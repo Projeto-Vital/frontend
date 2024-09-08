@@ -3,6 +3,7 @@ import { buscar } from "../../../services/Service"
 import Produto from "../../../models/Produto"
 import CardProduto from "../cardproduto/CardProduto"
 import { useNavigate } from "react-router-dom"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function ListaProdutos() {
     const [produtos, setProdutos] = useState<Produto[]>([])
@@ -15,9 +16,8 @@ function ListaProdutos() {
           await buscar('/produtos', setProdutos)
     
         } catch (error){
-          alert('Houve um erro!')
+          ToastAlerta('Houve um erro!','erro')
           navigate("/")
-          
         }
         
       }
