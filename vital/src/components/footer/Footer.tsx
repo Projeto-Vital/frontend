@@ -29,8 +29,8 @@ function Footer() {
                 <div className="mb-4 md:mb-0">
                   <h3 className="text-md my-3 font-bold text-green-2 ">Siga-nos</h3>
                   <div className="flex gap-3">
-                    <a href="https://linktr.ee/projetointegradorvitalplus"><LinkedinLogo size={30} color="#437228"/></a>
-                    <a href="https://linktr.ee/projetointegradorvitalplus"><GithubLogo size={30} color="#437228"/></a>
+                    <a href="https://linktr.ee/projetointegradorvitalplus" target="blank"><LinkedinLogo size={30} color="#437228"/></a>
+                    <a href="https://linktr.ee/projetointegradorvitalplus" target="blank"><GithubLogo size={30} color="#437228"/></a>
                   </div>
                 </div>
 

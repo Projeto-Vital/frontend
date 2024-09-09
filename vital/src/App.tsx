@@ -15,6 +15,7 @@ import FormProduto from "./components/produtos/formproduto/FormProduto";
 import DeletarProduto from "./components/produtos/deletarproduto/DeletarProduto";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Funcionalidade from "./pages/funcionalidade/Funcionalidade";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <div className="min-h-[80vh]">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/funcionalidade" element={<Funcionalidade />} />
               <Route path="/contato" element={<Contato />} />
               <Route path="/cadastro" element={<Cadastro />} />
               <Route path="/login" element={<Login />} />

@@ -6,6 +6,7 @@ import { RotatingLines } from 'react-loader-spinner';
 import { atualizar, buscar, cadastrar } from '../../../services/Service';
 import { ToastAlerta } from '../../../utils/ToastAlerta';
 
+
 function FormCategoria() {
     const navigate = useNavigate()
 

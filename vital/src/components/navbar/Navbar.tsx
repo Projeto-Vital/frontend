@@ -37,7 +37,7 @@ function Navbar() {
         <div className="flex items-center gap-x-4">
           <ul className='lg:flex gap-6 mx-0 *:font-bold hidden'>
             <li className="hover:text-green-1 cursor-pointer"><Link to={'/produtos'}>Serviços</Link></li>
-            <li className="hover:text-green-1 cursor-pointer">Como Funciona</li>
+            <li className="hover:text-green-1 cursor-pointer"><Link to='/funcionalidade'>Como funciona</Link></li>
             <li className="hover:text-green-1 cursor-pointer"><Link to='/sobre'>Quem Somos</Link></li>
             <li className="hover:text-green-1 cursor-pointer">
               <Link to='/contato'>Contato</Link>
@@ -83,7 +83,7 @@ function Navbar() {
             <li className="hover:underline cursor-pointer text-white" onClick={toggleMenu}>
               <Link to={'/produtos'}>Serviços</Link>
             </li>
-            <li className="hover:underline cursor-pointer text-white"onClick={toggleMenu}>Como Funciona</li>
+            <li className="hover:underline cursor-pointer text-white"onClick={toggleMenu}><Link to='/funcionalidade'>Como Funciona</Link></li>
             <li className="hover:underline cursor-pointer text-white"onClick={toggleMenu}><Link to='/sobre'>Quem Somos</Link></li>
             <li className="hover:underline cursor-pointer text-white"onClick={toggleMenu}><Link to='/contato'>Contato</Link></li>
             <li className ={`hover:underline cursor-pointer text-white ${usuario.tipo === 3 ? 'block':'hidden'}`} onClick={toggleMenu}><Link to='/categorias'>Categorias</Link></li>
