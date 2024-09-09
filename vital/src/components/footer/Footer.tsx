@@ -1,4 +1,4 @@
-import { EnvelopeSimple, GithubLogo, InstagramLogo, LinkedinLogo, MapPin, YoutubeLogo } from "@phosphor-icons/react";
+import { EnvelopeSimple, GithubLogo, LinkedinLogo, MapPin } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
 
 function Footer() {

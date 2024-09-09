@@ -92,19 +92,19 @@ function FormCategoria() {
 
   return (
     <>
-        <div className="flex justify-center min-h-screen items-center py-6 bg-green-1">
-         <div className="flex w-3/5 p-5 rounded-lg bg-white shadow-2xl">
-            <div className='flex flex-col justify-center items-center w-full p-8 '>
-               <div className='flex flex-col items-center justify-center'>
-                    <h2 className='text-4xl font-bold text-green-2 mb-2'> 
+        <div className="flex justify-center min-h-screen items-center py-6 bg-green-2 px-6">
+         <div className="flex p-5 rounded-lg bg-white shadow-2xl max-w-[650px]">
+            <div className='flex flex-col justify-center items-center w-full p-8  '>
+               <div className='flex flex-col gap-y-2 items-center justify-center'>
+                    <h2 className='text-5xl font-bold text-green-2 mb-2 text-center'> 
                         {id === undefined ? 'Cadastrar Categoria' : 'Editar Categoria'}
                     </h2>
-                    <p className='mb-4 text-sm'>Cadastre ou edite dados de uma categoria</p>
+                    <p className='mb-4 text-md text-center'>Cadastre ou edite dados de uma categoria</p>
                </div>
                <form action="" className='flex flex-col w-full p-5 gap-2' onSubmit={cadastrarCategoria} >
-                    <label htmlFor="email">Nome da Categoria</label>
+                    <label className='text-green-2' htmlFor="email">Nome da Categoria</label>
                     <input
-                        className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-3"
+                        className="border p-2 focus:border-green-2 focus:outline-green-2 rounded-lg"
                         type="text"
                         name="categoria"
                         id="categoria"
@@ -112,9 +112,9 @@ function FormCategoria() {
                         value={categoria.categoria}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
-                     <label htmlFor="email">Descrição</label>
+                     <label className='text-green-2' htmlFor="email">Descrição</label>
                      <input
-                        className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-3"
+                        className="border p-2 focus:border-green-2 focus:outline-green-2 rounded-lg"
                         type="text"
                         name="descricao"
                         id="descricao"

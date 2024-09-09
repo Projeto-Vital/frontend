@@ -5,6 +5,7 @@ import Categoria from '../../../models/Categoria';
 import AuthContext from '../../../contexts/AuthContext';
 import { buscar, deletar } from '../../../services/Service';
 import { ToastAlerta } from '../../../utils/ToastAlerta';
+import { Trash } from '@phosphor-icons/react';
 
 function DeletarCategoria() {
     const navigate = useNavigate()
@@ -63,40 +64,35 @@ function DeletarCategoria() {
         retornar()
     }
   return (
-    <div className='mx-auto w-1/3 container min-h-screen flex flex-col justify-center'>
-        <h1 className='my-4 text-4xl text-center'>Deletar tema</h1>
-        <p className='mb-4 font-semibold text-center'>
-            Você tem certeza de que deseja apagar o tema a seguir?</p>
-        <div className='flex flex-col justify-between border rounded-lg overflow-hidden'>
-            <header 
-                className='bg-green-2 px-6 py-2 font-bold text-2xl text-white'>
-                Categoria
-            </header>
-            <p className='bg-slate-200 p-8 h-full text-3xl'>{categoria.categoria}</p>
-            <div className="flex">
-                <button 
-                    className='bg-red-1 py-2 w-full text-slate-100 font-bold hover:text-white'
-                    onClick={retornar}
-                    >
-                    Não
-                </button>
-                <button 
-                    className='font-bold hover:text-white flex justify-center items-center bg-green-2 hover:bg-indigo-600 w-full text-slate-100'
-                    onClick={deletarCategoria}
-                    >
-                    {isLoading ? <RotatingLines
-                    strokeColor="white"
-                    strokeWidth="5"
-                    animationDuration="0.75"
-                    width="24"
-                    visible={true}
-                /> :
-                    <span>Sim</span>
-                }
+   <>
+    <div className='bg-green-2 min-h-screen flex justify-center items-center px-6'>
+        <div className='bg-white shadow-md max-w-[450px] rounded-lg p-8'>
+          <div className='flex flex-col gap-y-3 items-center'>
+            <Trash size={55} color="#eb0000" />
+            <h3 className='font-bold text-4xl text-center'>Deletar Categoria</h3>
+            <p className='text-center text-2xl'>Tem certeza de que deseja deletar a categoria <strong>{categoria.categoria}</strong>?</p>
+            <div className='flex gap-x-3 justify-center mt-5'>
+              <button className='bg-purple hover:bg-purple-light font-bold text-white py-3 px-5 rounded-lg' onClick={retornar}
+              >Cancelar</button>
+              <button 
+                  className='bg-red-3 hover:bg-red-1 font-bold text-white py-3 px-5 rounded-lg'
+                  onClick={deletarCategoria}
+                >
+                  {isLoading ? <RotatingLines
+                  strokeColor="white"
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  width="24"
+                  visible={true}
+                  /> : <span>Deletar</span>
+                  }
                 </button>
             </div>
+          </div>
         </div>
     </div>
+   
+   </>
   )
 }
 

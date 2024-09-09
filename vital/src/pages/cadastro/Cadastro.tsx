@@ -63,8 +63,8 @@ function Cadastro() {
     setIsLoading(false)
   }
   return (
-    <>
-      <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
+  
+      <div className='grid grid-cols-1 sm:grid-cols-2 min-h-screen w-full'>
         <div className='hidden sm:block relative'>
             <div className='absolute top-[30%] left-[10%] flex flex-col'>
               <h1 className='text-8xl font-bold text-white py-5'>Junte-se a Vital<span className='text-green-2'>+</span></h1>
@@ -74,8 +74,8 @@ function Cadastro() {
             </div>
             <img className='w-full h-full object-cover object-center 'src="https://ik.imagekit.io/iixrkkdfp/sergio-carpintero-F-HAy5aqoDE-unsplash.jpg?updatedAt=1725737275113" alt="imagem de login" />
         </div>
-        <div className='flex flex-col justify-center px-4'>
-          <form className='max-w-[450px] w-full mx-auto bg-white p-4' onSubmit={cadastrarNovoUsuario}>
+        <div className='flex flex-col justify-center py-4'>
+          <form className='max-w-[450px] w-full mx-auto p-4' onSubmit={cadastrarNovoUsuario}>
             <h2 className='text-4xl sm:text-5xl font-bold text-center py-3 text-green-2'>Cadastre-se</h2>
             <p className='text-center pb-6'>Crie sua conta e tenha acesso aos nossos melhores serviços</p>
             <div className='flex flex-col py-2'>
@@ -171,7 +171,6 @@ function Cadastro() {
           </form>
         </div> 
       </div>
-    </>
   );
 }
 

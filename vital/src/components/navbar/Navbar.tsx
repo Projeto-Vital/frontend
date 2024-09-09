@@ -45,9 +45,9 @@ function Navbar() {
             <li className={`hover:text-green-1 cursor-pointer  ${usuario.tipo === 3 ? 'block':'hidden'}`}>
               <Link to = '/categorias'>Categorias </Link>
             </li>
-            <li className={`hover:text-green-1 cursor-pointer  ${usuario.tipo === 3 ? 'block':'hidden'}`}>
+            {/* <li className={`hover:text-green-1 cursor-pointer  ${usuario.tipo === 3 ? 'block':'hidden'}`}>
               <Link to = '/cadastroCategoria'>Cadastrar Categoria </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       
@@ -87,7 +87,6 @@ function Navbar() {
             <li className="hover:underline cursor-pointer text-white"onClick={toggleMenu}><Link to='/sobre'>Quem Somos</Link></li>
             <li className="hover:underline cursor-pointer text-white"onClick={toggleMenu}><Link to='/contato'>Contato</Link></li>
             <li className ={`hover:underline cursor-pointer text-white ${usuario.tipo === 3 ? 'block':'hidden'}`} onClick={toggleMenu}><Link to='/categorias'>Categorias</Link></li>
-            <li className ={`hover:underline cursor-pointer text-white ${usuario.tipo === 3 ? 'block':'hidden'}`} onClick={toggleMenu}><Link to='/cadastroCategoria'>Cadastrar Categoria</Link></li>
         </ul>
 
       </nav>

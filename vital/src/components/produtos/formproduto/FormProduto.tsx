@@ -142,11 +142,11 @@ function FormProduto() {
     const carregandoCategoria = categoria.categoria === '';
     
     return (
-        <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 min-h-screen w-full'>
 
             <div className='hidden sm:block relative'>
                 <div className='absolute top-[25%] left-[10%] flex flex-col'>
-                <h1 className='text-8xl font-bold text-white py-5'>Faça parte da Vital<span className='text-green-2'>+</span></h1>
+                <h1 className='text-6xl md:text-7xl lg:text-8xl font-bold text-white py-5'>Faça parte da Vital<span className='text-green-2'>+</span></h1>
                 <div className='max-w-[500px] p-2'>
                     <p className='text-xl text-white'>Faça parte de uma comunidade de profissionais comprometidos com a saúde e o bem-estar.
                          Junte-se aos especialistas que integram a Vital+ e colabore em um ambiente inovador, 
@@ -156,7 +156,7 @@ function FormProduto() {
                 <img className='w-full h-full object-cover object-center 'src="https://ik.imagekit.io/iixrkkdfp/cytonn-photography-n95VMLxqM2I-unsplash.jpg?updatedAt=1725752971356" alt="imagem de login" />
             </div>
             
-            <div className='flex flex-col justify-center px-4'>
+            <div className='flex flex-col justify-center p-4'>
                 <form className='max-w-[450px] w-full mx-auto bg-white p-4' onSubmit={cadastraProduto} >
                     <h2 className='text-4xl sm:text-5xl font-bold text-center py-3 text-green-2'> {id !== undefined ? 'Atualizar Serviço' : 'Cadastrar Serviço'}</h2>
                     <p className='text-center pb-6'> 
