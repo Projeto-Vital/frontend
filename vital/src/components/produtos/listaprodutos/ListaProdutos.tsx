@@ -3,7 +3,6 @@ import { buscar } from "../../../services/Service"
 import Produto from "../../../models/Produto"
 import CardProduto from "../cardproduto/CardProduto"
 import { useNavigate } from "react-router-dom"
-import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function ListaProdutos() {
     const [produtos, setProdutos] = useState<Produto[]>([])
@@ -16,8 +15,9 @@ function ListaProdutos() {
           await buscar('/produtos', setProdutos)
     
         } catch (error){
-          ToastAlerta('Houve um erro!','erro')
+          alert('Houve um erro!')
           navigate("/")
+          
         }
         
       }
@@ -27,8 +27,8 @@ function ListaProdutos() {
       }, [produtos.length])
 
   return (
-    <div>
-        <div className="container mx-auto my-24 grid grid-cols-1 gap-14">
+    <div className="bg-green-2">
+        <div className="container  mx-auto py-24 grid grid-cols-1 gap-14">
         {produtos.map((produto) => (
           <CardProduto key={produto.id} produto= {produto} />
         ))}
