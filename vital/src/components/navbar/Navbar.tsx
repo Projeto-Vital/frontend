@@ -36,7 +36,7 @@ function Navbar() {
          {/* Lista*/}
         <div className="flex items-center gap-x-4">
           <ul className='lg:flex gap-6 mx-0 *:font-bold hidden'>
-            <li className="hover:text-green-1 cursor-pointer"><Link to={'/produtos'}>Serviços</Link></li>
+            <li className="hover:text-green-1 cursor-pointer"><Link to='/produtos'>Serviços</Link></li>
             <li className="hover:text-green-1 cursor-pointer"><Link to='/funcionalidade'>Como funciona</Link></li>
             <li className="hover:text-green-1 cursor-pointer"><Link to='/sobre'>Quem Somos</Link></li>
             <li className="hover:text-green-1 cursor-pointer">
