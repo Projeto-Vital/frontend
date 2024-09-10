@@ -45,9 +45,6 @@ function Navbar() {
             <li className={`hover:text-green-1 cursor-pointer  ${usuario.tipo === 3 ? 'block':'hidden'}`}>
               <Link to = '/categorias'>Categorias </Link>
             </li>
-            {/* <li className={`hover:text-green-1 cursor-pointer  ${usuario.tipo === 3 ? 'block':'hidden'}`}>
-              <Link to = '/cadastroCategoria'>Cadastrar Categoria </Link>
-            </li> */}
           </ul>
         </div>
       

@@ -5,38 +5,46 @@ import CardProduto from "../cardproduto/CardProduto"
 import { useNavigate } from "react-router-dom"
 
 function ListaProdutos() {
-    const [produtos, setProdutos] = useState<Produto[]>([])
 
-    const navigate = useNavigate()
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-    async function buscarProdutos() {
+  const [produtos, setProdutos] = useState<Produto[]>([])
 
-        try{
-          await buscar(`/produtos`,(produtosOrdenados:Produto[]) => {
-          const listaProdutos = produtosOrdenados.sort((a,b) => a.id - b.id)
-          setProdutos(listaProdutos) ;
-          }
-        )
-    
-        } catch (error){
-          alert('Houve um erro!')
-          navigate("/")
-          
-        }
-        
+  const navigate = useNavigate()
+
+  async function buscarProdutos() {
+
+    try {
+      await buscar(`/produtos`, (produtosOrdenados: Produto[]) => {
+        const listaProdutos = produtosOrdenados.sort((a, b) => a.id - b.id)
+        setProdutos(listaProdutos);
       }
-    
-      useEffect(() =>{
-        buscarProdutos()
-      }, [produtos.length])
+      )
+
+    } catch (error) {
+      ToastAlerta('Houve um erro!', 'erro');
+      navigate("/");
+
+    }
+
+  }
+
+  useEffect(() => {
+    buscarProdutos()
+  }, [produtos.length])
 
   return (
     <div className="bg-green-2">
-        <div className="container  mx-auto py-24 grid grid-cols-1 gap-14">
+      <Link to={`/cadastroProduto`}>
+        <button className="border rounded font-semibold border-green-2 text-green-3 py-1 px-2 hover:bg-green-1 hover:text-white hover:shadow-lg hover:border-none">Cadastrar</button>
+      </Link>
+      <div className="container  mx-auto py-24 grid grid-cols-1 gap-14">
         {produtos.map((produto) => (
-          <CardProduto key={produto.id} produto= {produto} />
+          <CardProduto key={produto.id} produto={produto} />
         ))}
-        </div>
+      </div>
     </div>
   )
 }

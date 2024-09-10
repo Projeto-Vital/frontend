@@ -54,9 +54,6 @@ function CardProduto({ produto }: CardProdutoProps) {
             </div>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
-            <Link to={`/cadastroProduto`}>
-              <button className="border rounded font-semibold border-green-2 text-green-3 py-1 px-2 hover:bg-green-1 hover:text-white hover:shadow-lg hover:border-none">Cadastrar</button>
-            </Link>
             <Link to={`/deletarProduto/${produto.id}`}>
               <button className="border rounded font-semibold border-green-2 text-green-3 py-1 px-2 hover:bg-green-1 hover:text-white hover:shadow-lg hover:border-none">Deletar</button>
             </Link>
