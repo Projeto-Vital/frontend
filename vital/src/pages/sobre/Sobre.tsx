@@ -1,5 +1,5 @@
 import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react'
-import React from 'react'
+import { useEffect } from 'react';
 
 function Sobre() {
     useEffect(() => {
