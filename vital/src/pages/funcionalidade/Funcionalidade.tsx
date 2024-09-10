@@ -12,7 +12,7 @@ function Funcionalidade() {
             </div>
           </div>
           <div>
-            <img src="../src/assets/form.gif" alt="" width={250} />
+            <img src="https://ik.imagekit.io/iixrkkdfp/form.gif?updatedAt=1725994505835" alt="" width={250} />
           </div>
       </section>
 
@@ -27,7 +27,7 @@ function Funcionalidade() {
             </div>
           </div>
           <div>
-            <img src="../src/assets/search.gif" alt="" width={250} />
+            <img src="https://ik.imagekit.io/iixrkkdfp/search.gif?updatedAt=1725994506097" alt="" width={250} />
           </div>
       </section>
       <section className="w-full h-screen bg-green-2 flex items-center justify-evenly gap-x-5 px-7" id='profissional'>
@@ -43,7 +43,7 @@ function Funcionalidade() {
             </div>
           </div>
           <div>
-            <img src="../src/assets/handshake.gif" alt="" width={250} />
+            <img src="https://ik.imagekit.io/iixrkkdfp/handshake.gif?updatedAt=1725994505583" alt="" width={250} />
           </div>
       </section>
 
@@ -56,7 +56,7 @@ function Funcionalidade() {
             </div>
           </div>
           <div>
-            <img src="../src/assets/calendar.gif" alt="" width={250} />
+            <img src="https://ik.imagekit.io/iixrkkdfp/calendar.gif?updatedAt=1725994506030" alt="" width={250} />
           </div>
       </section>
     </>

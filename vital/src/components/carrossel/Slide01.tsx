@@ -47,28 +47,21 @@ function Slide01() {
           <div className='flex items-center gap-2 '>
           <select
               className="focus:ring focus:ring-green-3 bg-grey-1 rounded py-4 px-52   "
-              
               name="categoria"
               id="categoria"
             >
               <option disabled selected value="" className="text-grey-1">
                 Escolha a especialidade
               </option>
-              
-                {categorias.map((categoria) => (
-                  <option key={categoria.id} > {categoria.categoria} </option>
-                ))}
-            
-              
+              {categorias.map((categoria) => (
+                <option key={categoria.id} > {categoria.categoria} </option>
+              ))}    
           </select>
           <div>
             <button className="py-4 px-8 bg-green-3 rounded text-white">Pesquisar</button>
           </div>
           </div>
         </div>
-        
-        
-        
         </div>
         </div>
         

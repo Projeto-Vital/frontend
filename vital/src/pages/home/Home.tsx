@@ -9,7 +9,7 @@ function Home() {
   return (
     
     <div className='min-h-screen'>
-      <div>
+            <div>
                 <Carrossel />
             </div>
         {/*Serviços Section */}
