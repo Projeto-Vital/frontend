@@ -1,5 +1,9 @@
+import { useEffect } from 'react';
 
 function Funcionalidade() {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Isso garante que a página role para o topo ao carregar o componente
+  }, []);
 
   return (
     <>
