@@ -5,6 +5,9 @@ import UsuarioLogin from '../../models/UsuarioLogin'
 import { RotatingLines } from 'react-loader-spinner';
 
 function Login() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
   const { usuario, handleLogin, isLoading } = useContext(AuthContext)
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({} as UsuarioLogin);

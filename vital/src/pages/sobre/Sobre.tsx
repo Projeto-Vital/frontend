@@ -2,6 +2,9 @@ import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react'
 import React from 'react'
 
 function Sobre() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
   return (
     <div className='min-h-screen flex justify-center items-center py-14 px-6'>
 

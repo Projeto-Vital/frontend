@@ -13,6 +13,9 @@ interface Contato {
 }
 
 function Contato() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);

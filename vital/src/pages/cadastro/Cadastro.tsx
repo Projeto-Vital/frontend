@@ -8,6 +8,9 @@ import { ToastAlerta } from "../../utils/ToastAlerta";
 
 
 function Cadastro() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [confirmaSenha, setConfirmaSenha] = useState<string>('');
