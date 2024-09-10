@@ -54,6 +54,7 @@ function Footer() {
                 <h3 className="my-3 md:my-0 text-md text-green-2 font-bold">Institucional</h3>
                 <ul className="*:text-green-700">
                   <Link to = '/produtos'> <li className='hover:underline cursor-pointer'>Serviços</li></Link>
+                  <Link to = '/funcionalidade'> <li className='hover:underline cursor-pointer'>Como Funciona</li></Link>
                   <Link to = '/sobre'> <li className='hover:underline cursor-pointer'>Quem Somos</li></Link>
                   <Link to = '/contato'> <li className='hover:underline cursor-pointer'>Contatos</li></Link>
                   <Link to = '/login'> <li className='hover:underline cursor-pointer'>Entrar</li></Link>
@@ -65,7 +66,7 @@ function Footer() {
             </div>
 
             {/* Copyright*/}
-            <div className="flex justify-center items-center py-4 border-t border-t-green-600">
+            <div className="flex justify-center items-center py-4 border-t border-t-green-3">
               <p className="text-green-2">Copyright &#169; {date} Vital+ | ODS 3</p>
             </div>
         </footer>
