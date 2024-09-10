@@ -2,6 +2,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { RotatingLines } from "react-loader-spinner";
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 interface Contato {
   assunto: string;
@@ -58,114 +59,105 @@ function Contato() {
         }
       )
       .then((resposta: any) => {
-        alert("Mensagem enviada com sucesso!");
+        ToastAlerta("Mensagem enviada com sucesso!","sucesso");
         setIsSucess(true);
       })
       .catch((erro: any) => {
-        alert("Erro ao emviar a Mensagem!");
+        ToastAlerta("Erro ao emviar a Mensagem!","erro");
       });
 
     setIsLoading(false);
   }
 
   return (
-    <div className="flex flex-wrap justify-center min-h-screen py-2 items-center">
-      <div className="flex w-11/12 bg-white rounded-lg shadow-2xl">
-        <div className="w-1/2 flex justify-center">
-          <img
-            className="rounded-lg w-5/6"
-            src="https://ik.imagekit.io/lari/fundo(1).png"
-            alt="Imagem de uma figura com formato de uma cabeça humana, com flores branca sainda da cabeça."
-          />
-        </div>
-        <div className="w-1/2 flex flex-col justify-center items-center py-4">
-          <h1 className="text-center font-bold text-3xl text-green-2 py-6">
-            Entre em Contato
-          </h1>
-          <form
-            onSubmit={sendMail}
-            method="POST"
-            className="gap-2 flex flex-wrap justify-center"
-          >
-            <div className="flex flex-col flex-wrap w-5/12">
-              <label htmlFor="nome">Nome</label>
-              <input
-                type="text"
-                id="nome"
-                name="name"
-                placeholder="Digite seu nome"
-                value={contato.nome}
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  atualizarEstado(e)
-                }
-                required
-                className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-2"
-              />
-            </div>
-            <div className="flex flex-col flex-wrap w-5/12">
-              <label htmlFor="telefone">Telefone</label>
-              <input
-                type="tel"
-                id="telefone"
-                name="telefone"
-                pattern="[0-9]{11}"
-                value={contato.telefone}
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  atualizarEstado(e)
-                }
-                required
-                placeholder="Digite seu telefone. Ex: 11988888888"
-                className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-2"
-              />
-            </div>
-            <div className="flex flex-col flex-wrap w-5/12">
-              <label htmlFor="email">E-mail</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={contato.email}
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  atualizarEstado(e)
-                }
-                required
-                placeholder="Digite seu e-mail"
-                className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-2"
-              />
-            </div>
-            <div className="flex flex-col flex-wrap w-5/12">
-              <label htmlFor="assunto">Assunto</label>
-              <input
-                type="text"
-                id="assunto"
-                name="assunto"
-                value={contato.assunto}
-                onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                  atualizarEstado(e)
-                }
-                required
-                placeholder="Digite o assunto"
-                className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-2"
-              />
+    <>
+    <div className='grid grid-cols-1 sm:grid-cols-2 min-h-screen w-full'>
+
+      <div className='hidden sm:block relative'>
+          <img className='w-full h-full object-cover object-center 'src="https://ik.imagekit.io/iixrkkdfp/ctt%20(1).webp?updatedAt=1725975625955" alt="imagem de login" />
+      </div>
+
+      <div className='flex flex-col justify-center p-4'>
+        <form className='max-w-[450px] w-full mx-auto bg-white p-4' onSubmit={sendMail} method="POST" >
+            <h2 className='text-4xl sm:text-5xl font-bold text-center py-3 text-green-2'> 
+              Entre em contato
+            </h2>
+            <p className='text-center pb-6'> 
+              Entre em contato conosco para mais informações
+            </p>
+            <div className='flex flex-col py-2'>
+                <label htmlFor='nome' className='text-green-3 mb-1'>Nome</label>
+                <input 
+                    className='border p-2 focus:border-green-2 focus:outline-green-2 rounded-lg'
+                    placeholder='Digite seu nome'
+                    type="text" 
+                    name="nome" 
+                    required
+                    id="nome"
+                    value={contato.nome}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                    />
             </div>
 
-            <div className="flex flex-col flex-wrap w-10/12 gap-3">
-              <label htmlFor="mensagem">Mensagem</label>
-              <textarea
-                id="mensagem"
-                name="mensagem"
-                value={contato.mensagem}
-                onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-                  atualizarEstado(e)
-                }
+            <div className='flex flex-col py-2'>
+                <label htmlFor='telefone' className='text-green-3 mb-1'>Telefone</label>
+                <input
+                className='border p-2 focus:border-green-2 focus:outline-green-2 rounded-lg'
+                placeholder="Digite seu telefone. Ex: 11988888888"
                 required
-                className="focus:ring focus:ring-green-3 bg-grey-1 rounded-lg p-4"
+                type="tel" 
+                name="telefone" 
+                id="telefone" 
+                pattern="[0-9]{11}"
+                value={contato.telefone}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                />
+            </div>
+
+            <div className='flex flex-col py-2'>
+                <label htmlFor='email'className='text-green-3 mb-1'>Email</label>
+                <input
+                className='border p-2 focus:border-green-2 focus:outline-green-2 rounded-lg'
+                placeholder='Digite seu email' 
+                required
+                type="email" 
+                name="email" 
+                id="email" 
+                value={contato.email}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                />
+            </div>
+
+            <div className='flex flex-col py-2'>
+                <label htmlFor='assunto' className='text-green-3 mb-1'>Assunto</label>
+                <input
+                className='border p-2 focus:border-green-2 focus:outline-green-2 rounded-lg'
+                placeholder='Digite o assunto' 
+                required
+                type="text" 
+                name="assunto" 
+                id="assunto" 
+                value={contato.assunto}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                />
+            </div>
+            <div className='flex flex-col py-2'>
+                <label htmlFor='mensagem' className='text-green-3 mb-1'>Mensagem</label>
+                <textarea
+                  id="mensagem"
+                  name="mensagem"
+                  value={contato.mensagem}
+                  onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
+                    atualizarEstado(e)
+                  }
+                  required
+                  className="border p-2 focus:border-green-2 focus:outline-green-2 rounded-lg"
               />
             </div>
             <button
               className="rounded text-white font-bold bg-red-3
                            hover:bg-red-1 hover:text-black py-2
-                           justify-center w-10/12 flex flex-wrap"
+                           justify-center flex flex-wrap w-full mb-1"
               onClick={retornar}
             >
               Cancelar
@@ -174,7 +166,7 @@ function Contato() {
               type="submit"
               className="rounded text-white font-bold bg-green-3
                            hover:bg-green-1 hover:text-black py-2
-                           justify-center w-10/12 flex flex-wrap"
+                           justify-center flex flex-wrap w-full"
             >
               {isLoading ? (
                 <RotatingLines
@@ -188,10 +180,10 @@ function Contato() {
                 <span>Enviar</span>
               )}
             </button>
-          </form>
-        </div>
-      </div>
+        </form>
+      </div> 
     </div>
+    </>
   );
 }
 

@@ -111,7 +111,7 @@ function FormProduto() {
                 if (error.toString().includes('401')) {
                     handleLogout()
                 } else {
-                    ToastAlerta('Erro ao atualizar o Produto','erro')
+                    ToastAlerta('Erro ao atualizar o serviço','erro')
                 }
             }
 
@@ -123,13 +123,13 @@ function FormProduto() {
                     },
                 })
 
-                ToastAlerta('Produto cadastrado com sucesso','sucesso');
+                ToastAlerta('Serviço cadastrado com sucesso','sucesso');
 
             } catch (error: any) {
                 if (error.toString().includes('401')) {
                     handleLogout()
                 } else {
-                    ToastAlerta('Erro ao cadastrar o Produto','erro');
+                    ToastAlerta('Erro ao cadastrar o serviço','erro');
                 }
             }
         }
@@ -152,7 +152,7 @@ function FormProduto() {
                         onde o conhecimento e a experiência se unem para transformar vidas</p>
                 </div>
                 </div>
-                <img className='w-full h-full object-cover object-center 'src="https://ik.imagekit.io/iixrkkdfp/cytonn-photography-n95VMLxqM2I-unsplash.jpg?updatedAt=1725752971356" alt="imagem de login" />
+                <img className='w-full h-full object-cover object-center 'src="https://ik.imagekit.io/iixrkkdfp/erika-fletcher-GJwgw_XqooQ-unsplash.jpg?updatedAt=1725989060006" alt="imagem de login" />
             </div>
             
             <div className='flex flex-col justify-center p-4'>

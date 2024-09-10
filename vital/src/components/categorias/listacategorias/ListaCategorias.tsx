@@ -15,7 +15,11 @@ function ListaCategorias() {
 
     async function buscarCategorias() {
         try {
-            await buscar(`/categorias`, setCategoria)
+            await buscar(`/categorias`,( categoriasOrdenadas:Categoria[]) => {
+              const listaCategorias = categoriasOrdenadas.sort((a,b) => a.id - b.id)
+              setCategoria(listaCategorias) ;
+            }
+          )
         } catch (error: any) {
             if (error.toString().includes('401')) {
                 handleLogout()

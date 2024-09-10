@@ -12,7 +12,11 @@ function ListaProdutos() {
     async function buscarProdutos() {
 
         try{
-          await buscar('/produtos', setProdutos)
+          await buscar(`/produtos`,(produtosOrdenados:Produto[]) => {
+          const listaProdutos = produtosOrdenados.sort((a,b) => a.id - b.id)
+          setProdutos(listaProdutos) ;
+          }
+        )
     
         } catch (error){
           alert('Houve um erro!')

@@ -20,8 +20,8 @@ function CardProduto({ produto }: CardProdutoProps) {
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
         <div className="flex flex-col items-center">
           <img
-            src={produto.foto}
-            alt="Professional"
+            src={produto.usuario?.foto}
+            alt="foto do profissional"
             className="w-20 h-20 rounded-full"
           />
           <p className="text-2xl font-semibold mt-2">R${produto.preco}</p>
@@ -30,15 +30,15 @@ function CardProduto({ produto }: CardProdutoProps) {
 
         <div className="flex flex-col justify-between flex-1">
           <div className="flex justify-between items-start">
-            <h2 className="text-xl font-bold break-words">{produto.nome}</h2>
+            <h2 className="text-xl font-bold break-words">{produto.usuario?.nome}</h2>
             <button className="p-2 rounded-md flex items-center text-green-3">
               <BookmarkSimple size={26} color="#3F6212" /> 
             Favoritar
             </button>
           </div>
           <p className="text-gray-500">CRP {crm1}/{crm2}</p>
-          <p className="text-sm text-green-2  font-semibold">{produto?.categoria.categoria}</p>
-          <p className="text-sm text-gray-700 break-words">{produto.descricao}</p>
+          <p className="text-sm text-green-2  font-semibold">{produto.nome}</p>
+          <p className="text-sm text-gray-700 break-words">{produto.categoria.categoria}</p>
           <div className="flex items-center gap-1 mt-2">
             <span className="text-green-1 font-bold text-lg">★★★★★</span>
             <span className="text-green-1">({notas})</span>
