@@ -114,7 +114,7 @@ function CardProduto({ produto }: CardProdutoProps) {
             </div>
             <button className="text-green-3">{'>'}</button>
           </div>
-          <button className="py-2 px-4 mt-2 rounded-lg bg-grey-1">Agendar</button>
+          <button className="py-2 px-4 mt-2 rounded-lg bg-grey-1 text-green-2 hover:bg-green-2 hover:text-white">Agendar</button>
         </div>
       </div>
     </div>

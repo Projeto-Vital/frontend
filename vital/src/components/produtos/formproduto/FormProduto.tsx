@@ -54,8 +54,8 @@ function FormProduto() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado');
-            navigate('/');
+            ToastAlerta('Você precisa estar logado','info');
+            navigate('/login');
         }
     }, [token])
 
