@@ -236,7 +236,7 @@ function FormProduto() {
                         </select>
                     </div>
                     <button type='submit'
-                    className='border w-full my-5 py-3 bg-green-2 hover:bg-green-1 disabled:bg-green-3 text-white flex justify-center' 
+                    className='w-full mb-1 py-3 bg-green-2 text-white hover:bg-green-1 disabled:bg-grey-1 disabled:text-grey-3  flex justify-center' 
                     disabled={carregandoCategoria}>  
                     
                     {isLoading ?
@@ -247,6 +247,12 @@ function FormProduto() {
                         width="24"
                         visible={true}
                         /> : <span>{id !== undefined ? 'Atualizar' : 'Cadastrar'}</span>}
+                    </button>
+                    <button
+                        type='submit'
+                        className="rounded bg-indigo-400 flex justify-center
+                                  bg-red-3 hover:bg-red-medium duration-300 text-white py-3 w-full" onClick={retornar}>
+                        <span>Cancelar</span>
                     </button>
                 </form>
             </div> 
