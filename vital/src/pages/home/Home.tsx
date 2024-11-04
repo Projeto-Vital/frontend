@@ -83,6 +83,10 @@ function Home() {
         </div>
       </section>
 
+      <section>
+        <img src="https://ik.imagekit.io/iixrkkdfp/Time/Banner%20para%20E-commerce%20Cole%C3%A7%C3%A3o%20Inverno%20Minimalista%20(2).png?updatedAt=1729521469935" alt="vitalplus banner" />
+      </section>
+
   </div>
   );
 }
