@@ -164,7 +164,7 @@ function Cadastro() {
                 animationDuration="0.75"
                 width="24"
                 visible={true}
-                /> : <span >Entrar</span>}
+                /> : <span >Cadastrar</span>}
             </button>
             <div className='text-center'>
               <p>Já possui uma conta?
