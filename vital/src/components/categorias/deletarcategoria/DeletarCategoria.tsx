@@ -65,8 +65,8 @@ function DeletarCategoria() {
     }
   return (
    <>
-    <div className='bg-green-2 min-h-screen flex justify-center items-center px-6'>
-        <div className='bg-white shadow-md max-w-[450px] rounded-lg p-8'>
+    <div className='bg-green-1 min-h-screen flex justify-center items-center px-6'>
+        <div className='bg-white shadow-md max-w-[550px] rounded-lg p-8'>
           <div className='flex flex-col gap-y-3 items-center'>
             <Trash size={55} color="#eb0000" />
             <h3 className='font-bold text-4xl text-center'>Deletar Categoria</h3>
