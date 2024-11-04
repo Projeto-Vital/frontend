@@ -8,6 +8,11 @@ import { ToastAlerta } from "../../../utils/ToastAlerta";
 import { Trash } from "@phosphor-icons/react";
 
 function DeletarProduto() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);

@@ -8,6 +8,9 @@ import AuthContext from "../../../contexts/AuthContext";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormProduto() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 
     const navigate = useNavigate();
 

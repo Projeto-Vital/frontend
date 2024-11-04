@@ -8,6 +8,9 @@ import { ToastAlerta } from '../../../utils/ToastAlerta';
 import { Trash } from '@phosphor-icons/react';
 
 function DeletarCategoria() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
     const navigate = useNavigate()
 
     const [categoria, setCategoria] = useState<Categoria>({} as Categoria);

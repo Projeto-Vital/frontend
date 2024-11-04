@@ -7,6 +7,9 @@ import { atualizar, buscar, cadastrar } from '../../../services/Service';
 import { ToastAlerta } from '../../../utils/ToastAlerta';
 
 function FormCategoria() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
     const navigate = useNavigate();
 
     const [categoria, setCategoria] = useState<Categoria>({} as Categoria);
