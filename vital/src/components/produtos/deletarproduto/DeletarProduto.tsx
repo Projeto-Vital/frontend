@@ -50,7 +50,14 @@ function DeletarProduto() {
   async function deletarProduto() {
     setIsLoading(true);
 
-    if(id !== undefined && usuario.usuario === produto.usuario.usuario) {
+    if (id !== undefined && produto.usuario.id !== usuario.id) {
+            ToastAlerta("Você não tem permissão para deletar este produto.", "erro");
+            navigate('/produtos');
+            setIsLoading(false);
+            return; // Interrompe a execução
+        }
+
+    if(id !== undefined ) {
       try {
         await deletar(`/produtos/${id}`, {
           headers: { Authorization: token }

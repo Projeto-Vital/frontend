@@ -20,7 +20,7 @@ function CardProduto({ produto }: CardProdutoProps) {
 
 
   return (
-    <div className="bg-white grid grid-cols-1 md:grid-cols-2 rounded-lg overflow-hidden shadow-md max-w-screen-xl">
+    <div className="bg-white grid grid-cols-1 md:grid-cols-2 rounded-lg overflow-hidden shadow-md w-5/6">
       <div className="flex flex-col gap-y-5 p-7">
 
         <div className="flex flex-col md:flex-row justify-between items-center">

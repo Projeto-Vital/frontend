@@ -56,7 +56,7 @@ function ListaProdutos() {
           </button>
         </Link>
       </div>
-      <div className="flex flex-col gap-y-6 justify-center items-center p-8">
+      <div className="flex flex-col gap-y-6 justify-center items-center py-8">
         {produtos.map((produto) => (
           <CardProduto key={produto.id} produto={produto} />
         ))}
