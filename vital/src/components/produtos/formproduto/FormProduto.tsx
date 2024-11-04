@@ -54,8 +54,8 @@ function FormProduto() {
 
     useEffect(() => {
         if (token === '') {
-            ToastAlerta('Você precisa estar logado','info');
-            navigate('/login');
+            alert('Você precisa estar logado');
+            navigate('/');
         }
     }, [token])
 
@@ -97,7 +97,7 @@ function FormProduto() {
         e.preventDefault()
         setIsLoading(true)
 
-        if (id !== undefined) {
+        if (id !== undefined || usuario.usuario === produto.usuario.usuario) {
             try {
                 await atualizar(`/produtos`, produto, setProduto, {
                     headers: {
@@ -215,7 +215,7 @@ function FormProduto() {
                         />
                     </div>
 
-                    <div className='flex flex-col py-2'>
+                    <div className='flex flex-col py-2 mb-2'>
                         <p className='text-green-3 mb-1'>Categoria do Serviço</p>
                         <select name="categoria" id="categoria" className='border-slate-800 p-2 border rounded'
                         onChange={(e) => buscarCategoriaPorId(e.currentTarget.value)}>
@@ -228,7 +228,7 @@ function FormProduto() {
                         </select>
                     </div>
                     <button type='submit'
-                    className='border w-full my-5 py-3 bg-green-2 hover:bg-green-1 disabled:bg-green-3 text-white flex justify-center' 
+                    className=' w-full mb-1 py-3 bg-green-2 text-white hover:bg-green-1 disabled:bg-grey-1 disabled:text-grey-3  flex justify-center' 
                     disabled={carregandoCategoria}>  
                     
                     {isLoading ?
@@ -239,6 +239,12 @@ function FormProduto() {
                         width="24"
                         visible={true}
                         /> : <span>{id !== undefined ? 'Atualizar' : 'Cadastrar'}</span>}
+                    </button>
+                    <button
+                        type='submit'
+                        className="rounded bg-indigo-400 flex justify-center
+                                  bg-red-3 hover:bg-red-medium duration-300 text-white py-3 w-full" onClick={retornar}>
+                        <span>Cancelar</span>
                     </button>
                 </form>
             </div> 
