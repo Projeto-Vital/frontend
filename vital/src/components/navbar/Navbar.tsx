@@ -95,6 +95,12 @@ function Navbar() {
             <li className="hover:underline cursor-pointer text-white" onClick={toggleMenu}>
               <Link to='/contato'>Contato</Link>
             </li>
+            <li className="hover:underline cursor-pointer text-white" onClick={toggleMenu}>
+              <Link to='/login'>Entrar</Link>
+            </li>
+            <li className="hover:underline cursor-pointer text-white" onClick={toggleMenu}>
+              <Link to='/cadastro'>Cadastrar</Link>
+            </li>
             <li className={`hover:underline cursor-pointer text-white ${usuario.tipo === 3 ? 'block' : 'hidden'}`} onClick={toggleMenu}>
               <Link to='/categorias'>Categorias</Link>
             </li>
