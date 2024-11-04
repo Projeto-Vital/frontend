@@ -87,6 +87,14 @@ function Home() {
         <img src="https://ik.imagekit.io/iixrkkdfp/Time/Banner%20para%20E-commerce%20Cole%C3%A7%C3%A3o%20Inverno%20Minimalista%20(2).png?updatedAt=1729521469935" alt="vitalplus banner" />
       </section>
 
+      <section className="bg-grey-2">
+        <div className="flex justify-center p-6">
+          <p className="max-w-[800px] text-center">
+             Se precisar conversar ou buscar apoio emocional, o CVV - Centro de Valorização da Vida está disponível 24 horas pelo telefone 188, ou acesse o site <a href="https://cvv.org.br/" target="_blank" className="font-bold hover:underline">www.cvv.org.br</a> . Seu bem-estar é a nossa prioridade!
+          </p>
+        </div>
+      </section>
+
   </div>
   );
 }
