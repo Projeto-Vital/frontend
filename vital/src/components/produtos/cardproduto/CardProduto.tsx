@@ -1,120 +1,92 @@
 import { Link } from "react-router-dom";
 import Produto from "../../../models/Produto";
-import { BookmarkSimple } from "@phosphor-icons/react";
+import { ArrowClockwise, BookmarkSimple, Calendar, ChatTeardropText, Phone, Star, Trash, UserCircleCheck } from "@phosphor-icons/react";
+import { useContext } from "react";
+import AuthContext from "../../../contexts/AuthContext";
+import Agenda from "../../agenda/Agenda";
 
 interface CardProdutoProps {
   produto: Produto;
 }
 
 function CardProduto({ produto }: CardProdutoProps) {
-  const notas = Math.floor(Math.random() * 40) + 20;
-  const crm1 = Math.floor(Math.random() * 20) + 10;
-  const crm2 = Math.floor(Math.random() * 10000) + 1000;
-  const dia = Math.floor(Math.random() * 10) + 1;
-  const dia2 = Math.floor(Math.random() * 10) + 1;
-  const consultas = Math.floor(Math.random() * 100) + 40;
+
+  const { usuario, handleLogout } = useContext(AuthContext);
+  const token = usuario.token;
+
+  const atendimentos = Math.floor(Math.random() * 100) + 40;
+  const comentarios = Math.floor(Math.random() * 50) + 20;
   const min = Math.floor(Math.random() * 50) + 20;
 
+
   return (
-    <div className="bg-grey-1 shadow-2xl rounded-lg p-4  lg:p-8 grid lg:grid-cols-2 grid-cols-1 gap-20">
-      <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
-        <div className="flex flex-col items-center">
-          <img
-            src={produto.usuario?.foto}
-            alt="foto do profissional"
-            className="w-20 h-20 rounded-full"
-          />
-          <p className="text-2xl font-semibold mt-2">R${produto.preco}</p>
-          <p className="text-gray-500">{min} min</p>
+    <div className="bg-white grid grid-cols-1 md:grid-cols-2 rounded-lg overflow-hidden shadow-md max-w-screen-xl">
+      <div className="flex flex-col gap-y-5 p-7">
+
+        <div className="flex flex-col md:flex-row justify-between items-center">
+          <div className="flex gap-x-3">
+            <img src={produto.usuario.foto} alt="foto de perfil" className="w-[80px] h-[80px] rounded-lg object-cover" />
+            <div>
+              <h2 className="text-lg font-bold">{produto.usuario.nome}</h2>
+              <p className="font-text text-grey-3 text-sm">{produto.nome}</p>
+              <div className="flex mt-1">
+                <span><Star size={18} color="#fca327" /></span>
+                <span><Star size={18} color="#fca327" /></span>
+                <span><Star size={18} color="#fca327" /></span>
+                <span><Star size={18} color="#fca327" /></span>
+                <span><Star size={18} color="#fca327" /></span>
+              </div>
+            </div>
+          </div>
+          <div className={`${token === "" || usuario.tipo === 1 ? "hidden" : "flex gap-y-3 text-sm md:flex-row gap-x-3 mt-4"}`}>
+            <Link to={`/editarProduto/${produto.id}`}>
+              <div className="flex flex-col items-center cursor-pointer">
+                <ArrowClockwise size={20} color="#7b2cbf" />
+                <span className="text-purple-light text-sm md:text-base">Editar</span>
+              </div>
+            </Link>
+            <Link to={`/deletarProduto/${produto.id}`}>
+              <div className="flex flex-col items-center cursor-pointer">
+                <Trash size={20} color="#d90429" />
+                <span className="text-red-1 text-sm md:text-base">Deletar</span>
+              </div>
+            </Link>
+          </div>
         </div>
 
-        <div className="flex flex-col justify-between flex-1">
-          <div className="flex justify-between items-start">
-            <h2 className="text-xl font-bold break-words">{produto.usuario?.nome}</h2>
-            <button className="p-2 rounded-md flex items-center text-green-3">
-              <BookmarkSimple size={26} color="#3F6212" /> 
-            Favoritar
-            </button>
+        <div>
+          <p>{produto.descricao}</p>
+        </div>
+
+        <div className="flex flex-col md:flex-row gap-x-5">
+          <div className="flex items-center gap-x-2">
+            <ChatTeardropText size={28} />
+            <span className="font-bold text-sm">{`Comentários(${comentarios})`}</span>
           </div>
-          <p className="text-gray-500">CRP {crm1}/{crm2}</p>
-          <p className="text-sm text-green-2  font-semibold">{produto.nome}</p>
-          <p className="text-sm text-gray-700 break-words">{produto.categoria.categoria}</p>
-          <div className="flex items-center gap-1 mt-2">
-            <span className="text-green-1 font-bold text-lg">★★★★★</span>
-            <span className="text-green-1">({notas})</span>
+          <div className="flex items-center gap-x-2">
+            <UserCircleCheck size={28} />
+            <span className="font-bold text-sm">{`Atendimentos(${atendimentos})`}</span>
           </div>
-          <div className="flex gap-6 mt-2 flex-wrap">
-            <div className="flex items-center space-x-1">
-              <span>🗓️</span>
-              <span>{dia} anos, {dia2} meses</span>
-            </div>
-            <div className="flex items-center space-x-1">
-              <span>😊</span>
-              <span>{consultas} consultas realizadas</span>
-            </div>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
-            <Link to={`/deletarProduto/${produto.id}`}>
-              <button className="border rounded font-semibold border-green-2 text-green-3 py-1 px-2 hover:bg-green-1 hover:text-white hover:shadow-lg hover:border-none">Deletar</button>
-            </Link>
-            <Link to={`/editarProduto/${produto.id}`}>
-              <button className="border rounded font-semibold border-green-2 text-green-3 py-1 px-2 hover:bg-green-1 hover:text-white hover:shadow-lg hover:border-none">Atualizar</button>
-            </Link>
-          </div>
+        </div>
+        <hr className="border border-grey-4" />
+
+        <div className="flex justify-between items-center">
+          <div className="text-xl font-text font-bold">{`${min} minutos`}</div>
+          <div className="text-xl font-text font-bold bg-green-1 p-2 rounded-lg">R${produto.preco}</div>
         </div>
       </div>
 
-      <div className="flex flex-col items-center lg:items-start mt-4 lg:mt-0">
-        <div className="bg-white shadow-md rounded-lg p-4 w-full max-w-xs lg:max-w-md flex flex-col items-center">
-          <div className="flex justify-between items-center gap-4 mb-4">
-            <button className="text-green-3">{'<'}</button>
-            <div className="grid grid-cols-4 gap-2 ">
-             
-              <div className="text-center  text-xs">
-                <p className="text-sm font-semibold bg-grey-1">sex</p>
-                <p className="text-xs bg-grey-1">6 set</p>
-                <div className="flex flex-col gap-2">
-                  <button className="py-2 px-3 rounded-lg text-green-2">13:00</button>
-                  <button className="py-2 px-3 rounded-lg  bg-green-1 text-white font-semibold">16:00</button>
-                  <button className="py-2 px-3 rounded-lg bg-green-1 text-white font-semibold">17:00</button>
-                  <button className="py-2 px-3 rounded-lg text-green-2">18:00</button>
-                </div>
-              </div>
-              <div className="text-center  text-xs">
-                <p className="text-sm font-semibold bg-grey-1">sab</p>
-                <p className="text-xs bg-grey-1">7 set</p>
-                <div className="flex flex-col gap-2">
-                  <button className="py-2 px-3 rounded-lg text-green-2">13:00</button>
-                  <button className="py-2 px-3 rounded-lg text-green-2">16:00</button>
-                  <button className="py-2 px-3 rounded-lg text-green-2">17:00</button>
-                  <button className="py-2 px-3 rounded-lg text-green-2">18:00</button>
-                </div>
-              </div>
-              <div className="text-center  text-xs">
-                <p className="text-sm font-semibold bg-grey-1">dom</p>
-                <p className="text-xs bg-grey-1">8 set</p>
-                <div className="flex flex-col gap-2">
-                  <button className="py-2 px-3 rounded-lg text-green-2">13:00</button>
-                  <button className="py-2 px-3 rounded-lg text-green-2">16:00</button>
-                  <button className="py-2 px-3 rounded-lg text-green-2">17:00</button>
-                  <button className="py-2 px-3 rounded-lg text-green-2">18:00</button>
-                </div>
-              </div>
-              <div className="text-center  text-xs">
-                <p className="text-sm font-semibold bg-grey-1">seg</p>
-                <p className="text-xs bg-grey-1">9 set</p>
-                <div className="flex flex-col gap-2">
-                  <button className="py-2 px-3 rounded-lg text-green-2">13:00</button>
-                  <button className="py-2 px-3 rounded-lg text-green-2">16:00</button>
-                  <button className="py-2 px-3 rounded-lg bg-green-1 text-white font-semibold">17:00</button>
-                  <button className="py-2 px-3 rounded-lg   bg-green-1 text-white font-semibold">18:00</button>
-                </div>
-              </div>
-             
-            </div>
-            <button className="text-green-3">{'>'}</button>
-          </div>
-          <button className="py-2 px-4 mt-2 rounded-lg bg-grey-1 text-green-2 hover:bg-green-2 hover:text-white">Agendar</button>
+      <div className="flex flex-col justify-center items-center p-5 bg-grey-1 gap-y-5">
+        <Agenda />
+        <div className="flex gap-x-3">
+          <button className="bg-green-1 px-6 py-3 rounded-lg flex items-center gap-x-2 hover:scale-105 duration-300 ease-in-out">
+            <Phone size={25} color="#000000" />
+            <span className="font-semibold text-sm">Contato</span>
+          </button>
+          <button className="bg-green-1 px-6 py-3 rounded-lg flex items-center gap-x-2 hover:scale-105 duration-300 ease-in-out">
+            <Calendar size={25} color="#000000" />
+            <span className="font-semibold text-sm">Agendar</span>
+          </button>
         </div>
       </div>
     </div>
