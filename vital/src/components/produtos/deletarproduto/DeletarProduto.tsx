@@ -50,20 +50,23 @@ function DeletarProduto() {
   async function deletarProduto() {
     setIsLoading(true);
 
-    try {
-      await deletar(`/produtos/${id}`, {
-        headers: { Authorization: token }
-    });
-
+    if(id !== undefined && usuario.usuario === produto.usuario.usuario) {
+      try {
+        await deletar(`/produtos/${id}`, {
+          headers: { Authorization: token }
+      });
+  
       ToastAlerta("Serviço apagado com sucesso!","sucesso");
+    }
 
-    } catch (error: any) {
+    catch (error: any) {
       if (error.toString().includes("401")) {
         handleLogout();
       } else {
         ToastAlerta("Erro ao apagar o serviço!","erro");
       }
     }
+  }
 
     setIsLoading(false);
     retornar();
@@ -72,7 +75,7 @@ function DeletarProduto() {
 
   return (
     <>
-       <div className='bg-green-2 min-h-screen flex justify-center items-center px-6'>
+       <div className='bg-green-1 min-h-screen flex justify-center items-center px-6'>
         <div className='bg-white shadow-md max-w-[450px] rounded-lg p-8'>
           <div className='flex flex-col gap-y-3 items-center'>
             <Trash size={55} color="#eb0000" />
