@@ -42,13 +42,13 @@ function CardProduto({ produto }: CardProdutoProps) {
             <Link to={`/editarProduto/${produto.id}`}>
               <div className="flex flex-col items-center cursor-pointer">
                 <ArrowClockwise size={20} color="#7b2cbf" />
-                <span className="text-purple-light text-sm md:text-base">Editar</span>
+                <span className="text-purple-light text-base md:text-base">Editar</span>
               </div>
             </Link>
             <Link to={`/deletarProduto/${produto.id}`}>
               <div className="flex flex-col items-center cursor-pointer">
                 <Trash size={20} color="#d90429" />
-                <span className="text-red-1 text-sm md:text-base">Deletar</span>
+                <span className="text-red-1 text-base md:text-base">Deletar</span>
               </div>
             </Link>
           </div>
