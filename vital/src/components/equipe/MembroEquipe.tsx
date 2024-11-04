@@ -1,5 +1,4 @@
 import { GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
-import React from 'react'
 
 interface MembroEquipeProps {
   foto:string;
