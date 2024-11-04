@@ -39,7 +39,18 @@ function Home() {
         </div>
       </section>
 
-      
+      <section className="bg-grey-4">
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="flex flex-col justify-center p-10">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-5 text-center">Sua Saúde em Foco com a Vital+</h2>
+            <p className="font-text text-grey-3 text-base sm:text-lg text-center mb-5">Acreditamos que a prevenção é o melhor remédio, e é por isso que estamos comprometidos em transformar a saúde em algo acessível, descomplicado e personalizado para você. Seja com dicas de alimentação, exercícios, ou serviços especializados, a Vital+ está ao seu lado em cada passo da sua jornada de bem-estar.</p>
+          </div>
+          <video autoPlay muted loop >
+            <source src="https://ik.imagekit.io/iixrkkdfp/4352398-hd_1920_1080_25fps.mp4?updatedAt=1728687507763" type="" />
+          </video>
+        </div>
+      </section>
+
   </div>
   );
 }
