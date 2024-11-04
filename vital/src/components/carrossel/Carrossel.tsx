@@ -6,7 +6,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import "./Carrossel.css";
-import Slide01 from "./Slide01";
 
 function Home() {
     return (
@@ -26,38 +25,37 @@ function Home() {
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
             >
-
-                <SwiperSlide>
-                    <Slide01 />
-                </SwiperSlide>
-
                 <SwiperSlide>
                     <img
-                        className="swiper-slide-img" 
-                        src="https://ik.imagekit.io/2x0ly2dmob/Sem%20T%C3%ADtulo-1%20(1).jpg?updatedAt=1725982581068" 
-                        alt="Carrossel - Slide 02" 
+                        className="swiper-slide-img object-cover"
+                        src="https://ik.imagekit.io/iixrkkdfp/banners/banner%2002.png?updatedAt=1730652429775"
+                        alt="banner serviços"
                     />
                 </SwiperSlide>
-
                 <SwiperSlide>
-                <img 
-                    className="swiper-slide-img"
-                    src="https://ik.imagekit.io/2x0ly2dmob/Arte1.jpg?updatedAt=1725978527089" 
-                    alt="Carrossel - Slide 03" 
-                />
+                    <img
+                        className="swiper-slide-img"
+                        src="https://ik.imagekit.io/iixrkkdfp/banners/banner%2002%20(1).png?updatedAt=1730652510858"
+                        alt="banner serviços"
+                    />
                 </SwiperSlide>
-
                 <SwiperSlide>
-                <img 
-                    className="swiper-slide-img"
-                    src="https://ik.imagekit.io/2x0ly2dmob/Arte2.png?updatedAt=1725978526645" 
-                    alt="Carrossel - Slide 03" 
-                />
+                    <img
+                        className="swiper-slide-img object-cover"
+                        src="https://ik.imagekit.io/iixrkkdfp/banners/Black%20friday%20eletr%C3%B4nicos%20fotogr%C3%A1fico%20azul%20preto%20banner%20para%20site%20(6).png?updatedAt=1730487308990"
+                        alt="banner novembro azul"
+                    />
                 </SwiperSlide>
-
+                <SwiperSlide>
+                    <img
+                        className="swiper-slide-img object-cover"
+                        src="https://ik.imagekit.io/iixrkkdfp/banners/Black%20friday%20eletr%C3%B4nicos%20fotogr%C3%A1fico%20azul%20preto%20banner%20para%20site%20(5).png?updatedAt=1730487308763"
+                        alt="banner outubro rosa"
+                    />
+                </SwiperSlide>
             </Swiper>
         </>
-    )
+    );
 }
 
-export default Home
+export default Home;
